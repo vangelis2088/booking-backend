@@ -8,6 +8,7 @@
 #COPY . /backend/
 
 FROM gcr.io/google_appengine/python
+#FROM python:3.7.4-alpine3.10
 
 # Create a virtualenv for the application dependencies.
 # # If you want to use Python 2, use the -p python2.7 flag.
