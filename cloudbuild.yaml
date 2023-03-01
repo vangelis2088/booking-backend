@@ -39,7 +39,7 @@ steps:
      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes_backend.yaml.tpl | \
      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > booking-app-env/kubernetes_backend.yaml
 
-# This step pushes the manifest back to booking-app-env to candidate-backend
+# This step pushes the manifest back to booking-app-env to candidate-backend branch
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Push manifest
   entrypoint: /bin/sh
