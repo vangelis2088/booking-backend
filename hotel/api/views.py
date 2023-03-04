@@ -18,48 +18,6 @@ from hotel.models import Hotel, Room, Room_Type, Booking
 from hotel.api.serializers import HotelSerializer, RoomSerializer, RoomTypeSerializer, BookingSerializer
 from hotel.api.permissions import IsOwnHotelOrReadOnly, IsOwnBookingOrReadOnly
 
-"""
-@api_view(["GET", "POST"])
-def hotel_list_create_api_view(request):
-    if request.method == "GET":
-        hotels = Hotel.objects.all()
-        serializer = HotelSerializer(hotels, many=True)
-        return Response(serializer.data)
-
-    elif request.method == "POST":
-        serializer = HotelSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-"""
-
-"""
-@api_view(["GET","PUT","DELETE"])
-def hotel_detail_api_view(request,pk):
-    try:
-        hotel = Hotel.objects.get(pk=pk)
-    except Hotel.DoesNotExist:
-        return Response({"error": {
-                            "code": 404,
-                            "message": "Hotel not found!"
-                        }}, status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method == "GET":
-        serializer = HotelSerializer(hotel)
-        return Response(serializer.data)
-    
-    elif request.method == "PUT":
-        serializer = HotelSerializer(hotel, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == "DELETE":
-        hotel.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-"""
 
 class HotelListCreateAPIView(APIView):
 
