@@ -40,24 +40,3 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = "__all__"
-
-""" class HotelSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    hotel_name = serializers.CharField()
-    hotel_description = serializers.CharField()
-    location = serializers.CharField()
-    total_rooms = serializers.IntegerField()
-
-    def create(self, validated_data):
-        print(validated_data)
-        return Hotel.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.hotel_name = validated_data.get('hotel_name', instance.hotel_name)
-        instance.hotel_description = validated_data.get('hotel_description', instance.hotel_description)
-        instance.location = validated_data.get('location', instance.location)
-        instance.total_rooms = validated_data.get('total_rooms', instance.total_rooms)
-        instance.save()
-        return instance
-
-     """
