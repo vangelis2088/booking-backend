@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.utils.log import DEFAULT_LOGGING
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-51d=#8+nmdi1b!lnr%iv(norug2+xzg1u7eku4ltxppit-=cg9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','route53.vangelis.cloudns.ph','34.117.110.181','backend-service']
 
@@ -127,6 +128,41 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+        },
+        'django.server': DEFAULT_LOGGING['formatters']['django.server'],
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': None,
+            'class': 'logging.StreamHandler',
+        },
+        'django.server': DEFAULT_LOGGING['handlers']['django.server'],
+    },
+    'loggers': {
+        '': {
+            'handlers':['console'],
+            'level': 'INFO',
+        },
+        'booking': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'hotel': {
+            'handlers': ['console'],
+            'level': 'INFO'
+        },
+        'django.server': DEFAULT_LOGGING['loggers']['django.server'],
+    }
+}    
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
