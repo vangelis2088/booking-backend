@@ -39,6 +39,7 @@ class HotelListCreateAPIView(APIView):
                 return Response(serializer.data)
 
     def post(self, request):
+        # Post data for Hotel creation
         serializer = HotelSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
